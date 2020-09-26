@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Gestion des infractions</title>
+<link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}">
+</head>
+<body>
+<div th:replace="header_layout :: navbar"></div>
+<div class="container">
+	<div class="panel panel-primary">
+		<div class="panel-heading">Liste des infractions</div>
+	<div class="panel-body">
+		 <form th:action="@{/index}" method="get">
+		  <label>Matricule : </label>
+		  <input type="text" name="titre" th:value="${titre}">
+		  <button type="submit"><img src="search_24px.png"/></button>
+		 </form>
+		</div>
+		<div class="panel-body">
+				<table class="table">
+					<tr>
+						<th>N°Infraction</th>
+						<th>Date de l'infraction</th>
+						<th>Titre de l'infraction</th>
+						<th>Matricule de la voiture</th>
+						<th>Montant de l'infraction</th>
+						<th>Paiement</th>
+					</tr>
+					<tr th:each="p:${listInfractions}">
+						<td th:text="${p.num_infr}" align="center"></td>
+						<td th:text="${p.date_infr}" align="center"></td>
+						<td th:text="${p.titre_infr}"></td>
+						<td th:text="${p.matriculeV}" align="center"></td>
+						<td th:text="${p.montant_infr}" align="center"></td>
+						<td>
+						<span th:if="${p.valid_infr == true}"><img src="checked_checkbox_24px.png"/></span>
+						<span th:unless="${p.valid_infr == true}"><img src="delete_sign_24px.png"/></span>
+						</td>
+						<td>
+						 <a th:href="@{/edit(num_infr=${p.num_infr})}"><img src="pencil_24px.png"/></a>
+						</td>
+						<td>
+						 <a onclick="return confirm('Etes vous sûr ?')" th:href="@{/delete(num_infr=${p.num_infr}, page=${currentPage}, titre=${titre})}"><img src="trash_24px.png"/></a>
+						</td>
+					</tr>
+				</table>
+				<ul class="nav nav-pills">
+				 <li th:class="${currentPage==status.index}?'active':''" th:each="page,status:${page}">
+				 <a th:href="@{/index(page=${status.index})}" th:text="${status.index}"></a>
+				</li>
+				</ul>
+			</div>
+			</div>
+			</div>
+			<div>
+			<h1 align="center">لنغير سلوكنا</h1>
+			</div>
+</body>
+</html>

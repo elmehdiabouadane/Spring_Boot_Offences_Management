@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorator="layout">
+<head>
+<meta charset="utf-8">
+<title>Infractions</title>
+ <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+ <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{css/style.css}" />
+</head>
+<body>
+<div layout:fragment="content">
+	<div class="spacer col-md-6 col-xs-12">
+		<div th:replace="header_layout :: navbar"></div>
+		<div class="panel panel-default">
+			<div class="panel-heading">Modification d'une infraction</div>
+			<div class="panel-body">
+				<form th:action="@{save}" method="post">
+				<div class="form-group">
+						<label class="control-label">N° de l'infraction : </label>
+						<input class="form-control" type="text" name="num_infr" th:value="${infraction.num_infr}"/>
+						<!--<span class="red" th:errors="${produit.designation}"></span>-->
+					</div>
+				<div class="form-group">
+						<label class="control-label">Date de l'infraction : </label>
+						<input class="form-control" type="date" name="date_infr" th:value="${infraction.date_infr}"/>
+						<!--<span class="red" th:errors="${produit.designation}"></span>-->
+					</div>
+					<div class="form-group">
+						<label class="control-label">Titre de l'infraction : </label>
+						<input class="form-control" type="text" name="titre_infr" th:value="${infraction.titre_infr}"/>
+						<!--<span class="red" th:errors="${produit.designation}"></span>-->
+					</div>
+					<div class="form-group">
+						<label class="control-label">Matricule de la voiture : </label>
+						<input class="form-control" type="text" name="matriculeV" th:value="${infraction.matriculeV}"/>
+						<!--<span class="red" th:errors="${produit.designation}"></span>-->
+					</div>
+					<div class="form-group">
+						<label class="control-label">Montant de l'infraction : </label>
+						<input class="form-control" type="text" name="montant_infr" th:value="${infraction.montant_infr}"/>
+						<!--<span class="red" th:errors="${produit.designation}"></span>-->
+					</div>
+					<div class="form-group">
+						<label class="control-label">Payé : </label>
+						<input type="radio" name="valid_infr" th:value="${infraction.valid_infr = true}">&nbsp;&nbsp;
+						<!--<input class="form-control" type="text" name="valid_infr" th:value="${infraction.valid_infr}"/>-->
+						<label class="control-label">Non payé : </label>
+						<input type="radio" name="valid_infr" th:value="${infraction.valid_infr = false}">
+						<!--<span class="red" th:errors="${produit.designation}"></span>-->
+					</div>
+					<div>
+						<button type="submit" class="btn btn-primary">Save</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+</html>

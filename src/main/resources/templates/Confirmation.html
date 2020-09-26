@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Infractions</title>
+ <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}">
+</head>
+<body>
+	<div class="container">
+	<div th:replace="header_layout :: navbar"></div>
+		<div class="panel panel-default">
+			<div class="panel-heading">Confirmation</div>
+			<div class="panel-body">
+				<div class="form-group">
+					<label>N° de l'infraction : </label>
+					<label th:text="${infraction.num_infr}"></label>
+				</div>
+				<div class="form-group">
+					<label>Date de l'infraction : </label>
+					<label th:text="${infraction.date_infr}"></label>
+				</div>
+				<div class="form-group">
+					<label>Titre de l'infraction : </label>
+					<label th:text="${infraction.titre_infr}"></label>
+				</div>
+				<div class="form-group">
+					<label>Matricule de la voiture : </label>
+					<label th:text="${infraction.matriculeV}"></label>
+				</div>
+				<div class="form-group">
+					<label>Montant de l'infraction : </label>
+					<label th:text="${infraction.montant_infr}"></label>
+				</div>
+				<div class="form-group">
+					<label>Paiement : </label>
+					<label th:text="${infraction.valid_infr}"></label>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
